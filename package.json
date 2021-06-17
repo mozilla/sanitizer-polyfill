@@ -1,0 +1,34 @@
+{
+  "name": "sanitizer-polyfill",
+  "version": "0.9.0",
+  "description": "polyfill for the sanitizer api specification",
+  "author": "Mozilla",
+  "contributors": [
+    "Frederik Braun <fbraun@mozilla.com>"
+  ],
+  "license": "MPL-2.0",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mozilla/sanitizer-polyfill.git"
+  },
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "bugs": {
+    "url": "https://github.com/mozilla/sanitizer-polyfill/issues"
+  },
+  "homepage": "https://github.com/mozilla/sanitizer-polyfill#readme",
+  "files": [
+    "src",
+    "package.json",
+    "package-lock.json",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "devDependencies": {
+    "eslint": "^7.28.0"
+  }
+}
