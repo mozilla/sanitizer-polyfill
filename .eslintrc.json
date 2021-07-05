@@ -1,5 +1,5 @@
 {
-    "extends": ["eslint:recommended"],
+    "extends": ["eslint:recommended", "plugin:compat/recommended"],
     "parserOptions": {
         "sourceType": "module",
         "ecmaVersion": 6
@@ -9,8 +9,7 @@
         "node": true,
         "es6": true
     },
-    "plugins": [
-    ],
+    "plugins": [],
     "rules": {
 
     }
