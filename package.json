@@ -29,7 +29,7 @@
     "README.md"
   ],
   "devDependencies": {
-    "eslint": "^7.28.0",
+    "eslint": "^7.30.0",
     "eslint-plugin-compat": "^3.9.0",
     "eslint-plugin-jsdoc": "^35.4.1"
   }
