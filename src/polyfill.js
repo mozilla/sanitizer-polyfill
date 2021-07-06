@@ -5,6 +5,10 @@
 
 import {_sanitizeDocFragment, _sanitizeDocument, _fragmentParser, _normalizeConfig} from 'sanitizer.js';
 
+
+/**
+ * This function inserts the `Sanitizer` interface into `window`, if it exists.
+ */
 function setup() {
   // name of our global object
   const GLOBALNAME = "Sanitizer";
