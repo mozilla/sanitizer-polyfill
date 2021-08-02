@@ -26,6 +26,7 @@ function setup() {
       typeof window[GLOBALNAME] === "function" &&
       location.hash.indexOf("mustpolyfill") === -1
     ) {
+      console.warn("Sanitizer is already defined. Bailing out.");
       return;
     }
     //

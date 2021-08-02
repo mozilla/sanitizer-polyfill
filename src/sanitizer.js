@@ -3,9 +3,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-// base algorithms for a sanitizer
-// ?? help ?? import DOMPurify from '../vendor/purify.min.js';
-
 /**
  * sanitize a document fragment in-place
  * @param {object} config - configuration of the sanitizer object
