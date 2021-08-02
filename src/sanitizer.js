@@ -19,7 +19,7 @@ export const sanitizeDocFragment = function _sanitizeDocFragment(
 };
 
 /**
- * normalize a supplied Sanitizer-API config, to ensure baselien safety
+ * normalize a supplied Sanitizer-API config, to ensure baseline safety
  * @param config
  * @return {object} - a secure config
  * @private
