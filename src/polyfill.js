@@ -3,8 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import {sanitizeDocFragment, _normalizeConfig} from '../src/sanitizer.js';
-
+import { sanitizeDocFragment, _normalizeConfig } from "../src/sanitizer.js";
 
 /**
  * This function inserts the `Sanitizer` interface into `window`, if it exists.
@@ -23,8 +22,11 @@ function setup() {
   }
   if (window.isSecureContext) {
     // don't polyfill if already defined
-    if ((typeof window[GLOBALNAME] === "function") && (location.hash.indexOf("mustpolyfill") === -1)) {
-        return;
+    if (
+      typeof window[GLOBALNAME] === "function" &&
+      location.hash.indexOf("mustpolyfill") === -1
+    ) {
+      return;
     }
     //
     const sanitizer = function Sanitizer(config) {
@@ -43,8 +45,7 @@ function setup() {
           return new TypeError("Can't Sanitize input of type " + input.prototype);
         }, */
         sanitizeFor(localName, input) {
-        // TODO: issue #19: this should parse/sanitize/filter/validate values for localName.,
-
+          // TODO: issue #19: this should parse/sanitize/filter/validate bad values for localName
           // The inactive document does not issue requests and does not execute scripts.
           const inactiveDocument = document.implementation.createHTMLDocument();
           const context = inactiveDocument.createElement(localName);
@@ -55,7 +56,7 @@ function setup() {
         config: normalizedConfig,
       });
       return Object.freeze(api);
-    }
+    };
     window[GLOBALNAME] = sanitizer;
     HTMLElement.prototype[SETTER_NAME] = function setHTML(input, sanitizerObj) {
       const inactiveDocument = document.implementation.createHTMLDocument();

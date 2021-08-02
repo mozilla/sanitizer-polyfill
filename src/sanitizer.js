@@ -29,7 +29,7 @@ export const sanitizeDocFragment = function _sanitizeDocFragment(
  */
 export const _normalizeConfig = function _normalizeConfig(config) {
   if (!config) {
-      config = {};
+    config = {};
   }
   const allowElements = config.allowElements || DEFAULT_ALLOWED_ELEMENTS;
   const allowAttributes = config.allowAttributes || DEFAULT_ALLOWED_ATTRIBUTES;
