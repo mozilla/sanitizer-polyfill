@@ -1,11 +1,6 @@
-# Polyfill for the [WICG Sanitizer API](https://github.com/WICG/sanitizer-api/) specification.
+# Polyfill for the [Sanitizer API](https://github.com/WICG/sanitizer-api/) specification.
 
-**TODO**: This README needs an extension
-
-Plans:
-
-
-The polyfill might use a shim on top of
+The polyfill might provide a shim on top of
 [DOMPurify](https://github.com/cure53/DOMPurify/), that mainly rewrites the
 specified configuration object into a DOMPurify configuration.
 
