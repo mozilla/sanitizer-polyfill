@@ -18,12 +18,12 @@ export const sanitizeDocFragment = function _sanitizeDocFragment(
   DOMPurify.sanitize(input, normalizedConfig);
 };
 
-// /**
-//  * normalize a supplied Sanitizer-API config, to ensure baseline safety
-//  * @param config
-//  * @return {object} - a secure config
-//  * @private
-//  */
+/**
+ * normalize a supplied Sanitizer-API config, to ensure baseline safety
+ * @param {object} config - a configuration object
+ * @returns {object} - a secure config
+ * @private
+ */
 export const _normalizeConfig = function _normalizeConfig(config) {
   if (!config) {
     config = {};

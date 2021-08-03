@@ -9,6 +9,7 @@
         "node": true,
         "es6": true
     },
+    "ignorePatterns": ["**/vendor/*.js"],
     "plugins": ["jsdoc","prettier"],
     "rules": {
         "prettier/prettier": ["error"],
