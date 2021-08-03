@@ -18,12 +18,12 @@ export const sanitizeDocFragment = function _sanitizeDocFragment(
   DOMPurify.sanitize(input, normalizedConfig);
 };
 
-/**
- * normalize a supplied Sanitizer-API config, to ensure baseline safety
- * @param config
- * @return {object} - a secure config
- * @private
- */
+// /**
+//  * normalize a supplied Sanitizer-API config, to ensure baseline safety
+//  * @param config
+//  * @return {object} - a secure config
+//  * @private
+//  */
 export const _normalizeConfig = function _normalizeConfig(config) {
   if (!config) {
     config = {};
@@ -46,12 +46,12 @@ export const _normalizeConfig = function _normalizeConfig(config) {
   };
 };
 
-/**
- * transform a Sanitizer-API-shaped configuration object into a config for DOMPurify invocation
- * @param config
- * @return {object} - a DOMPurify-compatible configuration object
- * @private
- */
+// /**
+//  * transform a Sanitizer-API-shaped configuration object into a config for DOMPurify invocation
+//  * @param config
+//  * @return {object} - a DOMPurify-compatible configuration object
+//  * @private
+//  */
 export const _transformConfig = function transformConfig(config) {
   const allowElems = config.allowElements || [];
   const allowAttrs = config.allowAttributes || [];

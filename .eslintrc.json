@@ -1,5 +1,5 @@
 {
-    "extends": ["eslint:recommended", "plugin:compat/recommended"],
+    "extends": ["prettier","eslint:recommended", "plugin:compat/recommended"],
     "parserOptions": {
         "sourceType": "module",
         "ecmaVersion": 6
@@ -9,8 +9,9 @@
         "node": true,
         "es6": true
     },
-    "plugins": ["jsdoc"],
+    "plugins": ["jsdoc","prettier"],
     "rules": {
+        "prettier/prettier": ["error"],
         "jsdoc/require-jsdoc": 1,
         "jsdoc/require-param": 1,
         "jsdoc/require-param-name": 1,
