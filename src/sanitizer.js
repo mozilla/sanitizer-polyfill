@@ -13,9 +13,10 @@ export const sanitizeDocFragment = function _sanitizeDocFragment(
   config,
   input
 ) {
-  let normalizedConfig = _normalizeConfig(config);
-  normalizedConfig.IN_PLACE = true;
-  DOMPurify.sanitize(input, normalizedConfig);
+  /* global DOMPurify */
+  let domPurifyConfig = _transformConfig(config);
+  domPurifyConfig.IN_PLACE = true;
+  DOMPurify.sanitize(input, domPurifyConfig);
 };
 
 /**
@@ -52,7 +53,7 @@ export const _normalizeConfig = function _normalizeConfig(config) {
 //  * @return {object} - a DOMPurify-compatible configuration object
 //  * @private
 //  */
-export const _transformConfig = function transformConfig(config) {
+const _transformConfig = function transformConfig(config) {
   const allowElems = config.allowElements || [];
   const allowAttrs = config.allowAttributes || [];
   const dropElems = config.dropElements || [];
