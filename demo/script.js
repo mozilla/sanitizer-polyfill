@@ -1,7 +1,7 @@
 const inputEl = document.getElementById("input");
 const toutEl = document.getElementById("textoutput");
 const houtEl = document.getElementById("htmloutput");
-  
+
   addEventListener("load", function() {
     inputEl.onkeyup = doSanitize;
     // smoke test
