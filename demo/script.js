@@ -2,14 +2,11 @@ const inputEl = document.getElementById("input");
 const toutEl = document.getElementById("textoutput");
 const houtEl = document.getElementById("htmloutput");
   
-  
   addEventListener("load", function() {
     inputEl.onkeyup = doSanitize;
     // smoke test
     try { console.log("typeof Sanitizer: " + (typeof Sanitizer)); } catch(e) { };
-    try { window.s = new Sanitizer(); } catch(e) { console.warn('Sanitizer is not a constructor:', e);  };
-    
-  
+    try { window.s = new Sanitizer(); } catch(e) { console.warn('Sanitizer is not a constructor:', e);};
   });
   
   function fillExample() {
@@ -36,30 +33,13 @@ const houtEl = document.getElementById("htmloutput");
   }
     
   function doSanitize() {
-
     const inputValue = prepareInput();
-    
     houtEl.setHTML(inputValue,{});
-    
     let docFragment = houtEl.innerHTML;
-    
     toutEl.innerHTML="";
     toutEl.append(docFragment)
-    
   }
-  
-  
-//   function disableUnsupported() {
-//     function disableEl(el) {
-//       const warnText = "Sanitizer is not available. Please switch to a browser that defines `Sanitizer`, e.g. Firefox Nightly with `dom.security.sanitizer.enabled` set to true.";    
-//       el.disabled = true;
-//       el.classList.add("disabled");
-//       el.title = warnText;
-//       if ("placeholder" in el) { el.placehoder = warnText; }
-//     }
-    // disableEl(inputEl);
-    
-    
-    inputEl.onkeyup = () => {};
+ 
+  inputEl.onkeyup = () => {};
   
   
