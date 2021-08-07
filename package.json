@@ -15,7 +15,7 @@
     "url": "git+https://github.com/mozilla/sanitizer-polyfill.git"
   },
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
     "prettier": "prettier --write ."
   },
   "bugs": {
