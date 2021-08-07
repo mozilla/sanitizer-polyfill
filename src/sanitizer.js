@@ -56,12 +56,12 @@ export const _normalizeConfig = function _normalizeConfig(config) {
   };
 };
 
-// /**
-//  * transform a Sanitizer-API-shaped configuration object into a config for DOMPurify invocation
-//  * @param config
-//  * @return {object} - a DOMPurify-compatible configuration object
-//  * @private
-//  */
+/**
+ * transform a Sanitizer-API-shaped configuration object into a config for DOMPurify invocation
+ * @param {object} config - a configuration object
+ * @returns {object} - a DOMPurify-compatible configuration object
+ * @private
+ */
 const _transformConfig = function transformConfig(config) {
   const allowElems = config.allowElements || [];
   const allowAttrs = config.allowAttributes || [];

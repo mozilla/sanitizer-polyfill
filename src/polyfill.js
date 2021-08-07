@@ -45,6 +45,12 @@ function setup() {
           }
           return new TypeError("Can't Sanitize input of type " + input.prototype);
         }, */
+
+        /*
+         * @param {string} localName - name of context element
+         * @param {Node} input - a document fragment to be sanitized
+         * @returns {Node} DocumentFragment
+         */
         sanitizeFor(localName, input) {
           // TODO: issue #19: this should parse/sanitize/filter/validate bad values for localName
           // The inactive document does not issue requests and does not execute scripts.
