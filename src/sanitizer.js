@@ -26,8 +26,17 @@ export const sanitizeDocFragment = function _sanitizeDocFragment(
  * @private
  */
 export const _normalizeConfig = function _normalizeConfig(config) {
-  if (!config) {
+  if (
+    config &&
+    Object.keys(config).length === 0 &&
+    config.constructor === Object
+  ) {
     config = {};
+  }
+  for (let [configurationElementList, elements] of Object.entries(config)) {
+    config[configurationElementList] = elements.map((element) => {
+      return element.toLowerCase();
+    });
   }
   const allowElements = config.allowElements || DEFAULT_ALLOWED_ELEMENTS;
   const allowAttributes = config.allowAttributes || DEFAULT_ALLOWED_ATTRIBUTES;
