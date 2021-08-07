@@ -52,11 +52,11 @@ function setup() {
          * @returns {Node} DocumentFragment
          */
         sanitizeFor(localName, input) {
-          // TODO: issue #19: this should parse/sanitize/filter/validate bad values for localName
           // The inactive document does not issue requests and does not execute scripts.
           const inactiveDocument = document.implementation.createHTMLDocument();
           const context = inactiveDocument.createElement(localName);
           context.innerHTML = input;
+          this.config.WHOLE_DOCUMENT = true; //set to sanitize bad values for localName
           sanitizeDocFragment(this.config, context);
           return context;
         },
