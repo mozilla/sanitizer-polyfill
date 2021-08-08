@@ -38,6 +38,7 @@ export const _normalizeConfig = function _normalizeConfig(config) {
     return supportedConfigurationLists.has(key);
   });
 
+  // TODO https://github.com/mozilla/sanitizer-polyfill/issues/29
   for (let [configurationElementList, elements] of Object.entries(config)) {
     config[configurationElementList] = elements.map((element) => {
       return element.toLowerCase();
