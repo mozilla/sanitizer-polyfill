@@ -33,11 +33,17 @@ export const _normalizeConfig = function _normalizeConfig(config) {
   ) {
     config = {};
   }
+
+  config = Object.keys(config).filter((key) => {
+    return supportedConfigurationLists.has(key);
+  });
+
   for (let [configurationElementList, elements] of Object.entries(config)) {
     config[configurationElementList] = elements.map((element) => {
       return element.toLowerCase();
     });
   }
+
   const allowElements = config.allowElements || DEFAULT_ALLOWED_ELEMENTS;
   const allowAttributes = config.allowAttributes || DEFAULT_ALLOWED_ATTRIBUTES;
   const blockElements = config.blockElements || DEFAULT_BLOCKED_ELEMENTS;
@@ -74,6 +80,16 @@ const _transformConfig = function transformConfig(config) {
     FORBID_ATTR: dropAttrs,
   };
 };
+
+const supportedConfigurationLists = new Set([
+  "allowElements",
+  "blockElements",
+  "dropElements",
+  "allowAttributes",
+  "dropAttributes",
+  "allowCustomElements",
+  "allowComments",
+]);
 
 // from https://wicg.github.io/sanitizer-api/#constants
 const DEFAULT_ALLOWED_ELEMENTS = [
