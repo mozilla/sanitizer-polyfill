@@ -16,7 +16,7 @@
   },
   "scripts": {
     "lint": "eslint . --exit-on-fatal-error",
-    "autolint": "eslint . --lint && prettier --write .",
+    "autolint": "eslint . --fix && prettier --write .",
     "prettier": "prettier --check ."
   },
   "bugs": {
