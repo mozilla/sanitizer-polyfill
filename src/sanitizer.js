@@ -34,24 +34,27 @@ export const _normalizeConfig = function _normalizeConfig(config) {
     config = {};
   }
 
-  config = Object.keys(config).filter((key) => {
-    return supportedConfigurationLists.has(key);
-  });
-
+  let normalizedConfig = {};
   // TODO https://github.com/mozilla/sanitizer-polyfill/issues/29
   for (let [configurationElementList, elements] of Object.entries(config)) {
-    config[configurationElementList] = elements.map((element) => {
-      return element.toLowerCase();
-    });
+    if (supportedConfigurationLists.has(configurationElementList)) {
+      normalizedConfig[configurationElementList] = elements.map((element) => {
+        return element.toLowerCase();
+      });
+    }
   }
 
-  const allowElements = config.allowElements || DEFAULT_ALLOWED_ELEMENTS;
-  const allowAttributes = config.allowAttributes || DEFAULT_ALLOWED_ATTRIBUTES;
-  const blockElements = config.blockElements || DEFAULT_BLOCKED_ELEMENTS;
-  const dropElements = config.dropElements || DEFAULT_DROP_ELEMENTS;
-  const dropAttributes = config.dropAttributes || DEFAULT_DROP_ATTRIBUTES;
-  const allowComments = !!config.allowComments;
-  const allowCustomElements = !!config.allowCustomElements;
+  const allowElements =
+    normalizedConfig.allowElements || DEFAULT_ALLOWED_ELEMENTS;
+  const allowAttributes =
+    normalizedConfig.allowAttributes || DEFAULT_ALLOWED_ATTRIBUTES;
+  const blockElements =
+    normalizedConfig.blockElements || DEFAULT_BLOCKED_ELEMENTS;
+  const dropElements = normalizedConfig.dropElements || DEFAULT_DROP_ELEMENTS;
+  const dropAttributes =
+    normalizedConfig.dropAttributes || DEFAULT_DROP_ATTRIBUTES;
+  const allowComments = !!normalizedConfig.allowComments;
+  const allowCustomElements = !!normalizedConfig.allowCustomElements;
   return {
     allowElements,
     allowAttributes,
