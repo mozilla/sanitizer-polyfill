@@ -112,7 +112,7 @@ const SUPPORTED_CONFIGURATION_LISTS = new Set([
 ]);
 
 // from https://wicg.github.io/sanitizer-api/#constants
-const DEFAULT_ALLOWED_ELEMENTS = new Set([
+export const DEFAULT_ALLOWED_ELEMENTS = new Set([
   "a",
   "abbr",
   "acronym",

@@ -3,7 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { sanitizeDocFragment, _normalizeConfig } from "../src/sanitizer.js";
+import {
+  DEFAULT_ALLOWED_ELEMENTS,
+  sanitizeDocFragment,
+  _normalizeConfig,
+} from "../src/sanitizer.js";
 
 /**
  * This function inserts the `Sanitizer` interface into `window`, if it exists.
@@ -49,6 +53,11 @@ function setup() {
           // TODO: issue #19: this should parse/sanitize/filter/validate bad values for localName
           // The inactive document does not issue requests and does not execute scripts.
           const inactiveDocument = document.implementation.createHTMLDocument();
+          if (!DEFAULT_ALLOWED_ELEMENTS.has(localName)) {
+            throw new SanitizerError(
+              `${localName} is not an element in built-in default allow list`
+            );
+          }
           const context = inactiveDocument.createElement(localName);
           context.innerHTML = input;
           sanitizeDocFragment(this.config, context);
@@ -66,6 +75,13 @@ function setup() {
       sanitizeDocFragment(sanitizerObj.config, context);
       this.replaceChildren(...context.children);
     };
+  }
+}
+
+class SanitizerError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "SanitizerError";
   }
 }
 
