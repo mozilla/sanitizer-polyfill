@@ -42,9 +42,8 @@ export const _normalizeConfig = function _normalizeConfig(config) {
         return element.toLowerCase();
       });
       if (configurationElementList === "allowElements") {
-        const defaultAllowedElementsSet = new Set(DEFAULT_ALLOWED_ELEMENTS);
         normalizedConfig[configurationElementList].forEach((element) => {
-          if (!defaultAllowedElementsSet.has(element)) {
+          if (!DEFAULT_ALLOWED_ELEMENTS.has(element)) {
             throw new SanitizerConfigurationError(
               `${element} is not included in built-in element allow list`
             );
@@ -55,7 +54,7 @@ export const _normalizeConfig = function _normalizeConfig(config) {
   }
 
   const allowElements =
-    normalizedConfig.allowElements || DEFAULT_ALLOWED_ELEMENTS;
+    normalizedConfig.allowElements || Array.from(DEFAULT_ALLOWED_ELEMENTS);
   const allowAttributes =
     normalizedConfig.allowAttributes || DEFAULT_ALLOWED_ATTRIBUTES;
   const blockElements =
@@ -76,12 +75,12 @@ export const _normalizeConfig = function _normalizeConfig(config) {
   };
 };
 
-// /**
-//  * transform a Sanitizer-API-shaped configuration object into a config for DOMPurify invocation
-//  * @param config
-//  * @return {object} - a DOMPurify-compatible configuration object
-//  * @private
-//  */
+/**
+ * transform a Sanitizer-API-shaped configuration object into a config for DOMPurify invocation
+ * @param {object} config
+ * @returns {object} - a DOMPurify-compatible configuration object
+ * @private
+ */
 const _transformConfig = function transformConfig(config) {
   const allowElems = config.allowElements || [];
   const allowAttrs = config.allowAttributes || [];
@@ -113,7 +112,7 @@ const SUPPORTED_CONFIGURATION_LISTS = new Set([
 ]);
 
 // from https://wicg.github.io/sanitizer-api/#constants
-const DEFAULT_ALLOWED_ELEMENTS = [
+const DEFAULT_ALLOWED_ELEMENTS = new Set([
   "a",
   "abbr",
   "acronym",
@@ -241,7 +240,8 @@ const DEFAULT_ALLOWED_ELEMENTS = [
   "var",
   "video",
   "wbr",
-];
+]);
+
 const DEFAULT_ALLOWED_ATTRIBUTES = [
   "abbr",
   "accept",
