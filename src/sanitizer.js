@@ -37,10 +37,20 @@ export const _normalizeConfig = function _normalizeConfig(config) {
   let normalizedConfig = {};
   // TODO https://github.com/mozilla/sanitizer-polyfill/issues/29
   for (let [configurationElementList, elements] of Object.entries(config)) {
-    if (supportedConfigurationLists.has(configurationElementList)) {
+    if (SUPPORTED_CONFIGURATION_LISTS.has(configurationElementList)) {
       normalizedConfig[configurationElementList] = elements.map((element) => {
         return element.toLowerCase();
       });
+      if (configurationElementList === "allowElements") {
+        const defaultAllowedElementsSet = new Set(DEFAULT_ALLOWED_ELEMENTS);
+        normalizedConfig[configurationElementList].forEach((element) => {
+          if (!defaultAllowedElementsSet.has(element)) {
+            throw new SanitizerConfigurationError(
+              `${element} is not included in built-in element allow list`
+            );
+          }
+        });
+      }
     }
   }
 
@@ -85,7 +95,14 @@ const _transformConfig = function transformConfig(config) {
   };
 };
 
-const supportedConfigurationLists = new Set([
+class SanitizerConfigurationError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "SanitizerConfigurationError";
+  }
+}
+
+const SUPPORTED_CONFIGURATION_LISTS = new Set([
   "allowElements",
   "blockElements",
   "dropElements",
