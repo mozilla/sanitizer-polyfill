@@ -5,6 +5,7 @@
 
 import {
   DEFAULT_ALLOWED_ELEMENTS,
+  getDefaultConfiguration,
   sanitizeDocFragment,
   _normalizeConfig,
 } from "../src/sanitizer.js";
@@ -66,6 +67,7 @@ function setup() {
         getConfiguration() {
           return normalizedConfig;
         },
+        getDefaultConfiguration: getDefaultConfiguration(),
       });
       return Object.freeze(api);
     };

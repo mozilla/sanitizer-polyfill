@@ -31,7 +31,7 @@ export const _normalizeConfig = function _normalizeConfig(config) {
     Object.keys(config).length === 0 &&
     config.constructor === Object
   ) {
-    config = {};
+    return getDefaultConfiguration();
   }
 
   let normalizedConfig = {};
@@ -73,6 +73,45 @@ export const _normalizeConfig = function _normalizeConfig(config) {
     allowCustomElements,
     allowComments,
   };
+};
+
+/**
+ * return default sanitizer API configuration defined by the spec - https://wicg.github.io/sanitizer-api/#default-configuration
+ * @returns {object} - default sanitizer API config
+ */
+export const getDefaultConfiguration = function getDefaultConfiguration() {
+  // https://wicg.github.io/sanitizer-api/#ref-for-default-configuration%E2%91%A5
+  return {
+    allowCustomElements: false,
+    allowElements: _removeItems(DEFAULT_ALLOWED_ELEMENTS, [
+      "basefont",
+      "command",
+      "content",
+      "data",
+      "image",
+      "plaintext",
+      "portal",
+      "slot",
+      "template",
+      "textarea",
+      "title",
+      "xmp",
+    ]),
+    allowAttributes: _removeItems(DEFAULT_ALLOWED_ATTRIBUTES, [
+      "allowpaymentrequest",
+    ]),
+  };
+};
+
+/**
+ * @param {Array} arrayToModify - array you want to remove items from
+ * @param {Array} itemsToRemove - list of elements or attributes you want to remove from arrayToModify
+ * @returns {object} - arrayToModify with all items in itemsToRemove removed from it
+ */
+const _removeItems = function _removeItems(arrayToModify, itemsToRemove) {
+  return arrayToModify.filter((element) => {
+    return !itemsToRemove.includes(element);
+  });
 };
 
 /**
