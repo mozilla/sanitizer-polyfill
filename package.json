@@ -17,7 +17,8 @@
   "scripts": {
     "lint": "eslint . --exit-on-fatal-error",
     "autolint": "eslint . --fix && prettier --write .",
-    "prettier": "prettier --check ."
+    "prettier": "prettier --check .",
+    "server": "live-server --open=demo --verbose"
   },
   "bugs": {
     "url": "https://github.com/mozilla/sanitizer-polyfill/issues"
@@ -36,6 +37,7 @@
     "eslint-plugin-compat": "^3.11.1",
     "eslint-plugin-jsdoc": "^36.0.6",
     "eslint-plugin-prettier": "^3.4.0",
+    "live-server": "^1.1.0",
     "prettier": "^2.3.2"
   },
   "dependencies": {
