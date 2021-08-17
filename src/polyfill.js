@@ -46,7 +46,6 @@ function setup() {
           return new TypeError("Can't Sanitize input of type " + input.prototype);
         }, */
         sanitizeFor(localName, input) {
-          // TODO: issue #19: this should parse/sanitize/filter/validate bad values for localName
           // The inactive document does not issue requests and does not execute scripts.
           const inactiveDocument = document.implementation.createHTMLDocument();
           const context = inactiveDocument.createElement(localName);
