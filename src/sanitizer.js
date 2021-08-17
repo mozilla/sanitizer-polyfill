@@ -84,12 +84,12 @@ export const _normalizeConfig = function _normalizeConfig(config) {
 const _transformConfig = function transformConfig(config) {
   const allowElems = config.allowElements || [];
   const allowAttrs = config.allowAttributes || [];
-  const dropElems = config.dropElements || [];
+  const blockElements = config.blockElements || [];
   const dropAttrs = config.dropAttributes || [];
   return {
     ALLOWED_TAGS: allowElems,
     ALLOWED_ATTR: allowAttrs,
-    FORBID_TAGS: dropElems,
+    FORBID_TAGS: blockElements,
     FORBID_ATTR: dropAttrs,
   };
 };

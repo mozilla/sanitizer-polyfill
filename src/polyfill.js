@@ -64,6 +64,9 @@ function setup() {
           return context;
         },
         config: normalizedConfig,
+        getConfiguration() {
+          return normalizedConfig;
+        },
       });
       return Object.freeze(api);
     };
