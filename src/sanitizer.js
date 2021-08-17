@@ -56,12 +56,13 @@ export const _normalizeConfig = function _normalizeConfig(config) {
   const allowElements =
     normalizedConfig.allowElements || Array.from(DEFAULT_ALLOWED_ELEMENTS);
   const allowAttributes =
-    normalizedConfig.allowAttributes || DEFAULT_ALLOWED_ATTRIBUTES;
+    normalizedConfig.allowAttributes || Array.from(DEFAULT_ALLOWED_ATTRIBUTES);
   const blockElements =
-    normalizedConfig.blockElements || DEFAULT_BLOCKED_ELEMENTS;
-  const dropElements = normalizedConfig.dropElements || DEFAULT_DROP_ELEMENTS;
+    normalizedConfig.blockElements || Array.from(DEFAULT_BLOCKED_ELEMENTS);
+  const dropElements =
+    normalizedConfig.dropElements || Array.from(DEFAULT_DROP_ELEMENTS);
   const dropAttributes =
-    normalizedConfig.dropAttributes || DEFAULT_DROP_ATTRIBUTES;
+    normalizedConfig.dropAttributes || Array.from(DEFAULT_DROP_ATTRIBUTES);
   const allowComments = !!normalizedConfig.allowComments;
   const allowCustomElements = !!normalizedConfig.allowCustomElements;
   return {
@@ -89,10 +90,12 @@ const _transformConfig = function transformConfig(config) {
   const dropAttrs = config.dropAttributes || [];
   // https://github.com/cure53/DOMPurify/issues/556
   // To drop elements and their children upon sanitization, those elements need to be in both DOMPurify's FORBID_TAGS and FORBID_CONTENTS lists
+
+  //TODO simplify booleans to merge check for DEFAULT_DROP_ELEMENTS
   const isdropElementsSet =
-    dropElements !== DEFAULT_DROP_ELEMENTS && dropElements !== [];
+    dropElements !== Array.from(DEFAULT_DROP_ELEMENTS) && dropElements !== [];
   const isblockElementsSet =
-    blockElements !== DEFAULT_BLOCKED_ELEMENTS && blockElements !== [];
+    blockElements !== Array.from(DEFAULT_BLOCKED_ELEMENTS) && blockElements !== [];
   let domPurifyConfig = {
     ALLOWED_TAGS: allowElems,
     ALLOWED_ATTR: allowAttrs,
@@ -261,7 +264,7 @@ export const DEFAULT_ALLOWED_ELEMENTS = new Set([
   "wbr",
 ]);
 
-const DEFAULT_ALLOWED_ATTRIBUTES = [
+const DEFAULT_ALLOWED_ATTRIBUTES = new Set([
   "abbr",
   "accept",
   "accept-charset",
@@ -473,8 +476,8 @@ const DEFAULT_ALLOWED_ATTRIBUTES = [
   "webkitdirectory",
   "width",
   "wrap",
-];
-const DEFAULT_BLOCKED_ELEMENTS = [
+]);
+const DEFAULT_BLOCKED_ELEMENTS = new Set([
   "script",
   "iframe",
   "object",
@@ -494,6 +497,6 @@ const DEFAULT_BLOCKED_ELEMENTS = [
   "slot",
   "portal",
   "data",
-];
-const DEFAULT_DROP_ELEMENTS = [];
-const DEFAULT_DROP_ATTRIBUTES = [];
+]);
+const DEFAULT_DROP_ELEMENTS = new Set([]);
+const DEFAULT_DROP_ATTRIBUTES = new Set([]);
