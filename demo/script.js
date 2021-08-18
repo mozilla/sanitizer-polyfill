@@ -22,37 +22,22 @@ function fillExample() {
   inputEl.value = `<p>hi! <svg/onload="alert(1)" />well <em>please</em> <a href="javascript:alert(2)" title="pretty-please">click me!</a>`;
 }
 
-/**
- *
- */
-function prepareInput() {
-  switch (inputSelect.value) {
-    case "String":
-      return input.value;
-      break;
-    case "DocumentFragment":
-      const template = document.createElement("template");
-      template.innerHTML = input.value;
-      return template.content;
-      break;
-    case "Document":
-      const parser = new DOMParser();
-      return parser.parseFromString(input.value, "text/html");
-      break;
-    default:
-      throw new Error("invalid value for input type select");
-  }
+function contextInput() {
+  return contextSelect.value;
 }
-
 /**
  *
  */
 function doSanitize() {
-  const inputValue = prepareInput();
-  houtEl.setHTML(inputValue, {});
-  let docFragment = houtEl.innerHTML;
+  const context = contextInput();
+  const inputValue = input.value;
+  let doc = document.createElement(context);
+  doc.setHTML(inputValue, {});
+  let docFragment = doc.innerHTML;
   toutEl.innerHTML = "";
   toutEl.append(docFragment);
+  houtEl.innerHTML = "";
+  houtEl.append(doc);
 }
 
 inputEl.onkeyup = () => {};

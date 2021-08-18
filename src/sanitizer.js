@@ -9,6 +9,7 @@
  * @param {Node} input - a document fragment
  * @return Nothing - the operation is in-place
  */
+
 export const sanitizeDocFragment = function _sanitizeDocFragment(
   config,
   input
