@@ -27,7 +27,7 @@ function fillExample() {
 function doSanitize() {
   const context = contextSelect.value;
   const inputValue = input.value;
-  contextEl = document.createElement(context);
+  const contextEl = document.createElement(context);
   contextEl.setHTML(inputValue, {});
   toutEl.value = contextEl.innerHTML;
   houtEl.replaceChildren(contextEl);
