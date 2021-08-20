@@ -1,24 +1,24 @@
 {
-    "extends": ["prettier","eslint:recommended", "plugin:compat/recommended"],
-    "parserOptions": {
-        "sourceType": "module",
-        "ecmaVersion": 6
-    },
-    "env": {
-        "browser": true,
-        "node": true,
-        "es6": true
-    },
-    "ignorePatterns": ["**/vendor/*.js"],
-    "plugins": ["jsdoc","prettier"],
-    "rules": {
-        "prettier/prettier": ["error"],
-        "jsdoc/require-jsdoc": 1,
-        "jsdoc/require-param": 1,
-        "jsdoc/require-param-name": 1,
-        "jsdoc/require-param-type": 1,
-        "jsdoc/require-returns": 1,
-        "jsdoc/require-returns-type": 1,
-        "jsdoc/check-alignment": 1
-    }
+  "extends": ["prettier", "eslint:recommended", "plugin:compat/recommended"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 6
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "ignorePatterns": ["**/vendor/*.js"],
+  "plugins": ["jsdoc", "prettier"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "jsdoc/require-jsdoc": 1,
+    "jsdoc/require-param": 1,
+    "jsdoc/require-param-name": 1,
+    "jsdoc/require-param-type": 1,
+    "jsdoc/require-returns": 1,
+    "jsdoc/require-returns-type": 1,
+    "jsdoc/check-alignment": 1
+  }
 }

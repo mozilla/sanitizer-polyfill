@@ -73,7 +73,6 @@ function setup() {
     HTMLElement.prototype[SETTER_NAME] = function setHTML(input, sanitizerObj) {
       const inactiveDocument = document.implementation.createHTMLDocument();
       const context = inactiveDocument.createElement(this.localName);
-      console.log(this.localName);
       context.innerHTML = input;
       sanitizeDocFragment(sanitizerObj.config, context);
       this.replaceChildren(...context.children);

@@ -21,23 +21,16 @@ addEventListener("load", function () {
 function fillExample() {
   inputEl.value = `<p>hi! <svg/onload="alert(1)" />well <em>please</em> <a href="javascript:alert(2)" title="pretty-please">click me!</a>`;
 }
-
-function contextInput() {
-  return contextSelect.value;
-}
 /**
  *
  */
 function doSanitize() {
-  const context = contextInput();
+  const context = contextSelect.value;
   const inputValue = input.value;
-  let doc = document.createElement(context);
-  doc.setHTML(inputValue, {});
-  let docFragment = doc.innerHTML;
-  toutEl.innerHTML = "";
-  toutEl.append(docFragment);
-  houtEl.innerHTML = "";
-  houtEl.append(doc);
+  contextEl = document.createElement(context);
+  contextEl.setHTML(inputValue, {});
+  toutEl.value = contextEl.innerHTML;
+  houtEl.replaceChildren(contextEl);
 }
 
 inputEl.onkeyup = () => {};

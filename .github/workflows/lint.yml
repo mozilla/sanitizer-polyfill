@@ -1,20 +1,20 @@
-# Based on Node.js starter workflow 
+# Based on Node.js starter workflow
 # https://github.com/actions/starter-workflows/blob/main/ci/node.js.yml
 
 name: Lint
-on: 
+on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
-jobs: 
+jobs:
   Lint:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 12.x, 14.x, 16.x]
+        node-version: [12.x, 14.x, 16.x]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
