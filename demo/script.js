@@ -14,7 +14,6 @@ addEventListener("load", function () {
     console.warn("Sanitizer is not a constructor:", e);
   }
 });
-
 /**
  *
  */
