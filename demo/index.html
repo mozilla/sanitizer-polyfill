@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <meta name="description" content="JavaScript Polyfill for the Sanitizer API">
-  <title>Demo for the Sanitizer API Polyfill</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="JavaScript Polyfill for the Sanitizer API"
+    />
+    <title>Demo for the Sanitizer API Polyfill</title>
   <script src="../vendor/purify.min.js"></script>
-  <script src="../src/polyfill.js" type="module"></script>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1 id="mustpolyfill">Polyfill Demo<a href="?#mustpolyfill">¶</a></h1>
-  <textarea id="input" placeholder="Put your HTML input here"></textarea>
-  <br>
-  1. &#x1f4dd;
-  <!-- memo emoji --> Fill with input, e.g., <button onclick="fillExample()">Example input</button><br>
-  <br>
-  2. <i>(optional) <label for="inputSelect">Choose context:</label></i>
-  <select id="inputSelect">
-    <option value="String">String</option>
-    <option value="DocumentFragment">DocumentFragment</option>
-    <option value="Document">Document</option>
-  </select>
-  <br>
-  <br>
-  3. &#x1f9f4;
-  <!-- lotion emoji --> Sanitize:<button class="mono" onclick="doSanitize()">setHTML()</button>
-  <br>
-  <br>
-  <textarea id="textoutput" placeholder="This will contain the sanitized HTML as source"></textarea>
-  <div id="htmloutput"><em>Sanitized HTML will be rendered here</em></div>
-  <script src="script.js"></script>
-</body>
+    <script src="../src/polyfill.js" type="module"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 id="mustpolyfill">Polyfill Demo<a href="?#mustpolyfill">¶</a></h1>
+    <textarea id="input" placeholder="Put your HTML input here"></textarea>
+    <br />
+    1. &#x1f4dd;
+    <!-- memo emoji -->
+    Fill with input, e.g., <button onclick="fillExample()">Example input</button
+    ><br />
+    <br />
+    2. <i>(optional) <label for="inputSelect">Choose context:</label></i>
+    <select id="inputSelect">
+      <option value="String">String</option>
+      <option value="DocumentFragment">DocumentFragment</option>
+      <option value="Document">Document</option>
+    </select>
+    <br />
+    <br />
+    3. &#x1f9f4;
+    <!-- lotion emoji -->
+    Sanitize:<button class="mono" onclick="doSanitize()">setHTML()</button>
+    <br />
+    <br />
+    <textarea
+      id="textoutput"
+      placeholder="This will contain the sanitized HTML as source"
+    ></textarea>
+    <div id="htmloutput"><em>Sanitized HTML will be rendered here</em></div>
+    <script src="script.js"></script>
+  </body>
 </html>
