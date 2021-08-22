@@ -85,13 +85,32 @@ const _transformConfig = function transformConfig(config) {
   const allowElems = config.allowElements || [];
   const allowAttrs = config.allowAttributes || [];
   const blockElements = config.blockElements || [];
+  const dropElements = config.dropElements || [];
   const dropAttrs = config.dropAttributes || [];
-  return {
+  // https://github.com/cure53/DOMPurify/issues/556
+  // To drop elements and their children upon sanitization, those elements need to be in both DOMPurify's FORBID_TAGS and FORBID_CONTENTS lists
+  const isdropElementsSet =
+    dropElements !== DEFAULT_DROP_ELEMENTS && dropElements !== [];
+  const isblockElementsSet =
+    blockElements !== DEFAULT_BLOCKED_ELEMENTS && blockElements !== [];
+  let domPurifyConfig = {
     ALLOWED_TAGS: allowElems,
     ALLOWED_ATTR: allowAttrs,
-    FORBID_TAGS: blockElements,
     FORBID_ATTR: dropAttrs,
   };
+  if (isdropElementsSet && !isblockElementsSet) {
+    // Set FORBID_CONTENTS to drop all elements in dropElements
+    domPurifyConfig.FORBID_TAGS = dropElements;
+    domPurifyConfig.FORBID_CONTENTS = dropElements;
+  } else if (isdropElementsSet && isblockElementsSet) {
+    // Include all dropElements in FORBID_TAGS and specify to only drop elements in dropElements and not elements in blockElements with FORBID_CONTENTS
+    const union = new Set(blockElements.concat(dropElements));
+    domPurifyConfig.FORBID_TAGS = Array.from(union);
+    domPurifyConfig.FORBID_CONTENTS = dropElements;
+  } else {
+    domPurifyConfig.FORBID_TAGS = blockElements;
+  }
+  return domPurifyConfig;
 };
 
 class SanitizerConfigurationError extends Error {
