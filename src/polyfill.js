@@ -67,9 +67,11 @@ function setup() {
         getConfiguration() {
           return normalizedConfig;
         },
-        getDefaultConfiguration: getDefaultConfiguration(),
       });
       return Object.freeze(api);
+    };
+    sanitizer.getDefaultConfiguration = function () {
+      return getDefaultConfiguration();
     };
     window[GLOBALNAME] = sanitizer;
     HTMLElement.prototype[SETTER_NAME] = function setHTML(input, sanitizerObj) {
