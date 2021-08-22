@@ -39,16 +39,6 @@ function setup() {
 
       let normalizedConfig = _normalizeConfig(config);
       Object.assign(api, {
-        // implementation of `sanitize` pending spec further discussions.
-        /*sanitize(input) {
-          if (input instanceof DocumentFragment) {
-            return _sanitizeDocFragment(config, input);
-          }
-          if (input instanceof Document) {
-            return _sanitizeDocument(config, input)
-          }
-          return new TypeError("Can't Sanitize input of type " + input.prototype);
-        }, */
         sanitizeFor(localName, input) {
           // The inactive document does not issue requests and does not execute scripts.
           const inactiveDocument = document.implementation.createHTMLDocument();
@@ -59,10 +49,9 @@ function setup() {
           }
           const context = inactiveDocument.createElement(localName);
           context.innerHTML = input;
-          sanitizeDocFragment(this.config, context);
+          sanitizeDocFragment(this.getConfiguration(), context);
           return context;
         },
-        config: normalizedConfig,
         getConfiguration() {
           return normalizedConfig;
         },
@@ -74,7 +63,7 @@ function setup() {
       const inactiveDocument = document.implementation.createHTMLDocument();
       const context = inactiveDocument.createElement(this.localName);
       context.innerHTML = input;
-      sanitizeDocFragment(sanitizerObj.config, context);
+      sanitizeDocFragment(sanitizerObj.getConfiguration(), context);
       this.replaceChildren(...context.children);
     };
   }
