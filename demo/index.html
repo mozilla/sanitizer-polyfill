@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1 id="mustpolyfill">Polyfill Demo<a href="?#mustpolyfill">¶</a></h1>
+   <h1 id="mustpolyfill">Polyfill Demo<a href="?#mustpolyfill">¶</a></h1>
     <textarea id="input" placeholder="Put your HTML input here"></textarea>
     <br />
     1. &#x1f4dd;
@@ -21,17 +21,19 @@
     Fill with input, e.g., <button onclick="fillExample()">Example input</button
     ><br />
     <br />
-    2. <i>(optional) <label for="inputSelect">Choose context:</label></i>
-    <select id="inputSelect">
-      <option value="String">String</option>
-      <option value="DocumentFragment">DocumentFragment</option>
-      <option value="Document">Document</option>
+    2. <i><label for="contextSelect">Choose context:</label></i>
+    <select id="contextSelect">
+      <option value="div">div</option>
+      <option value="table">table</option>
+      <option value="select">select</option>
     </select>
     <br />
     <br />
     3. &#x1f9f4;
     <!-- lotion emoji -->
-    Sanitize:<button class="mono" onclick="doSanitize()">setHTML()</button>
+    Sanitize:<button class="mono" onclick="doSanitize()">
+      context.setHTML()
+    </button>
     <br />
     <br />
     <textarea
