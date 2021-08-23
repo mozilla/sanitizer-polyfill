@@ -5,6 +5,7 @@
 
 import {
   DEFAULT_ALLOWED_ELEMENTS,
+  getDefaultConfiguration,
   sanitizeDocFragment,
   _normalizeConfig,
 } from "../src/sanitizer.js";
@@ -68,6 +69,9 @@ function setup() {
         },
       });
       return Object.freeze(api);
+    };
+    sanitizer.getDefaultConfiguration = function () {
+      return getDefaultConfiguration();
     };
     window[GLOBALNAME] = sanitizer;
     HTMLElement.prototype[SETTER_NAME] = function setHTML(input, sanitizerObj) {
