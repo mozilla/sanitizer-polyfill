@@ -2,6 +2,7 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
+/* globals Sanitizer */
 
 import {
   DEFAULT_ALLOWED_ELEMENTS,
@@ -64,6 +65,12 @@ function setup() {
     };
     window[GLOBALNAME] = sanitizer;
     HTMLElement.prototype[SETTER_NAME] = function setHTML(input, sanitizerObj) {
+      if (
+        !sanitizerObj ||
+        typeof sanitizerObj.getConfiguration !== "function"
+      ) {
+        sanitizerObj = new Sanitizer();
+      }
       const inactiveDocument = document.implementation.createHTMLDocument();
       const context = inactiveDocument.createElement(this.localName);
       context.innerHTML = input;

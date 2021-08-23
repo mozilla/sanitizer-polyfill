@@ -27,9 +27,10 @@ export const sanitizeDocFragment = function _sanitizeDocFragment(
  */
 export const _normalizeConfig = function _normalizeConfig(config) {
   if (
-    config &&
-    Object.keys(config).length === 0 &&
-    config.constructor === Object
+    (config &&
+      Object.keys(config).length === 0 &&
+      config.constructor === Object) ||
+    typeof config == "undefined"
   ) {
     return getDefaultConfiguration();
   }
@@ -111,6 +112,9 @@ export const getDefaultConfiguration = function getDefaultConfiguration() {
  * @returns {object} - arrayToModify with all items in itemsToRemove removed from it
  */
 const _removeItems = function _removeItems(arrayToModify, itemsToRemove) {
+  if (arrayToModify instanceof Set) {
+    arrayToModify = Array.from(arrayToModify);
+  }
   return arrayToModify.filter((element) => {
     return !itemsToRemove.includes(element);
   });
