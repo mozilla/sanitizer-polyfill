@@ -36,6 +36,7 @@ export const _normalizeConfig = function _normalizeConfig(config) {
 
   let normalizedConfig = {};
   // TODO https://github.com/mozilla/sanitizer-polyfill/issues/29
+  // eslint-disable-next-line compat/compat
   for (let [configurationElementList, elements] of Object.entries(config)) {
     if (SUPPORTED_CONFIGURATION_LISTS.has(configurationElementList)) {
       normalizedConfig[configurationElementList] = elements.map((element) => {
@@ -54,6 +55,7 @@ export const _normalizeConfig = function _normalizeConfig(config) {
   }
 
   const allowElements =
+    // eslint-disable-next-line compat/compat
     normalizedConfig.allowElements || Array.from(DEFAULT_ALLOWED_ELEMENTS);
   const allowAttributes =
     normalizedConfig.allowAttributes || DEFAULT_ALLOWED_ATTRIBUTES;
