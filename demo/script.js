@@ -30,7 +30,7 @@ function doSanitize() {
   const context = contextSelect.value;
   const inputValue = inputEl.value;
   const contextEl = document.createElement(context);
-  contextEl.setHTML(inputValue, (new Sanitizer());
+  contextEl.setHTML(inputValue, new Sanitizer());
   toutEl.value = contextEl.innerHTML;
   houtEl.replaceChildren(contextEl);
 }
