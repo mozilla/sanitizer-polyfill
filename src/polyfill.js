@@ -35,30 +35,52 @@ function setup() {
       console.warn("Sanitizer is already defined. Bailing out.");
       return;
     }
-    //
+    
     const sanitizer = function Sanitizer(config) {
-      const api = Object.create({});
+      
 
       let normalizedConfig = _normalizeConfig(config);
-      Object.assign(api, {
-        sanitizeFor(localName, input) {
-          // The inactive document does not issue requests and does not execute scripts.
-          const inactiveDocument = document.implementation.createHTMLDocument();
-          if (!DEFAULT_ALLOWED_ELEMENTS.has(localName)) {
-            throw new SanitizerError(
-              `${localName} is not an element in built-in default allow list`
-            );
-          }
-          const context = inactiveDocument.createElement(localName);
-          context.innerHTML = input;
-          sanitizeDocFragment(this.getConfiguration(), context);
-          return context;
-        },
-        getConfiguration() {
-          return normalizedConfig;
-        },
-      });
-      return Object.freeze(api);
+
+      this.sanitizeFor=function (localName, input) {
+        // The inactive document does not issue requests and does not execute scripts.
+        const inactiveDocument = document.implementation.createHTMLDocument();
+        if (!DEFAULT_ALLOWED_ELEMENTS.has(localName)) {
+          throw new SanitizerError(
+            `${localName} is not an element in built-in default allow list`
+          );
+        }
+        const context = inactiveDocument.createElement(localName);
+        context.innerHTML = input;
+        sanitizeDocFragment(this.getConfiguration(), context);
+        return context;
+      }
+
+      this.getConfiguration = function () {
+        return normalizedConfig;
+      }
+
+      // const api = Object.create({});
+
+      // Object.assign(api, {
+      //   sanitizeFor(localName, input) {
+      //     // The inactive document does not issue requests and does not execute scripts.
+      //     const inactiveDocument = document.implementation.createHTMLDocument();
+      //     if (!DEFAULT_ALLOWED_ELEMENTS.has(localName)) {
+      //       throw new SanitizerError(
+      //         `${localName} is not an element in built-in default allow list`
+      //       );
+      //     }
+      //     const context = inactiveDocument.createElement(localName);
+      //     context.innerHTML = input;
+      //     sanitizeDocFragment(this.getConfiguration(), context);
+      //     return context;
+      //   },
+      //   getConfiguration() {
+      //     return normalizedConfig;
+      //   },
+      // });
+      // Object.freeze(api)
+      // return api;
     };
     sanitizer.getDefaultConfiguration = function () {
       return getDefaultConfiguration();
@@ -70,6 +92,10 @@ function setup() {
         typeof sanitizerObj.getConfiguration !== "function"
       ) {
         sanitizerObj = new Sanitizer();
+        Object.freeze(sanitizerObj);
+        console.log(sanitizerObj)
+        
+        console.log(sanitizerObj instanceof Sanitizer);
       }
       const inactiveDocument = document.implementation.createHTMLDocument();
       const context = inactiveDocument.createElement(this.localName);
