@@ -7,6 +7,7 @@ addEventListener("load", function () {
   inputEl.onkeyup = doSanitize;
   // smoke test
   console.log("typeof Sanitizer: " + typeof Sanitizer);
+  
   try {
     window.s = new Sanitizer();
   } catch (e) {
