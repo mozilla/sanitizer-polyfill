@@ -37,7 +37,6 @@ function setup() {
     }
     //
     const sanitizer = function Sanitizer(config) {
-      
       let normalizedConfig = _normalizeConfig(config);
       Object.assign(this, {
         sanitizeFor(localName, input) {
@@ -69,7 +68,6 @@ function setup() {
         typeof sanitizerObj.getConfiguration !== "function"
       ) {
         sanitizerObj = new Sanitizer();
-        
       }
       const inactiveDocument = document.implementation.createHTMLDocument();
       const context = inactiveDocument.createElement(this.localName);
