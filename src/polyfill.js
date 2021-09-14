@@ -37,10 +37,8 @@ function setup() {
     }
     //
     const sanitizer = function Sanitizer(config) {
-      const api = Object.create({});
-
       let normalizedConfig = _normalizeConfig(config);
-      Object.assign(api, {
+      Object.assign(this, {
         sanitizeFor(localName, input) {
           // The inactive document does not issue requests and does not execute scripts.
           const inactiveDocument = document.implementation.createHTMLDocument();
@@ -58,7 +56,7 @@ function setup() {
           return normalizedConfig;
         },
       });
-      return Object.freeze(api);
+      Object.freeze(this);
     };
     sanitizer.getDefaultConfiguration = function () {
       return getDefaultConfiguration();
