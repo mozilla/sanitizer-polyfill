@@ -31,6 +31,6 @@ function doSanitize() {
   const inputValue = inputEl.value;
   const contextEl = document.createElement(context);
   contextEl.setHTML(inputValue, new Sanitizer());
-  toutEl.value = contextEl.innerHTML;
+  toutEl.value = contextEl.outerHTML;
   houtEl.replaceChildren(contextEl);
 }
