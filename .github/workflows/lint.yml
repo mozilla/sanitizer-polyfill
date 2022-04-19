@@ -1,6 +1,3 @@
-# Based on Node.js starter workflow
-# https://github.com/actions/starter-workflows/blob/main/ci/node.js.yml
-
 name: Lint
 on:
   pull_request:
