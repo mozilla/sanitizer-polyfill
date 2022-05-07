@@ -17,13 +17,19 @@
   "scripts": {
     "lint": "eslint . --exit-on-fatal-error",
     "autolint": "eslint . --fix && prettier --write .",
-    "prettier": "prettier --check ."
+    "prettier": "prettier --check .",
+    "build:browser": "rollup -c rollup.config.browser.js",
+    "build:browser-min": "rollup -c rollup.config.browser-min.js",
+    "build:cjs": "rollup -c rollup.config.cjs.js",
+    "build:mjs": "rollup -c rollup.config.esm.js",
+    "build": "npm run build:browser && npm run build:browser-min && npm run build:cjs && npm run build:mjs"
   },
   "bugs": {
     "url": "https://github.com/mozilla/sanitizer-polyfill/issues"
   },
   "homepage": "https://github.com/mozilla/sanitizer-polyfill#readme",
   "files": [
+    "dist",
     "src",
     "package.json",
     "package-lock.json",
@@ -31,14 +37,24 @@
     "README.md"
   ],
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.3.0",
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-compat": "^4.0.2",
     "eslint-plugin-jsdoc": "^39.2.9",
     "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "rollup": "^2.72.1",
+    "rollup-plugin-terser": "^7.0.2"
   },
   "dependencies": {
     "dompurify": "^2.3.6"
+  },
+  "main": "./dist/sanitizer-polyfill.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/sanitizer-polyfill.cjs",
+      "import": "./dist/sanitizer-polyfill.mjs"
+    }
   }
 }
