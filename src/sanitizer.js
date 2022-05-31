@@ -143,6 +143,7 @@ const _transformConfig = function transformConfig(config) {
     ALLOWED_TAGS: allowElems,
     ALLOWED_ATTR: allowAttrs,
     FORBID_ATTR: dropAttrs,
+    ALLOW_UNKNOWN_PROTOCOLS: true,
   };
   if (isdropElementsSet && !isblockElementsSet) {
     // Set FORBID_CONTENTS to drop all elements in dropElements
