@@ -18,6 +18,6 @@ jobs:
       - run: npm run prettier && npm run lint
       - run: npm run build
       - uses: EndBug/add-and-commit@v9
-          with:
-            add: '["dist/sanitizer-polyfill.js", "dist/sanitizer-polyfill.min.js"]'
-            message: "Update dist [skip actions]"
+        with:
+          add: '["dist/sanitizer-polyfill.js", "dist/sanitizer-polyfill.min.js"]'
+          message: "Update dist [skip actions]"
