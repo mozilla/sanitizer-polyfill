@@ -6,6 +6,9 @@ on:
       - rollup-build # For testing, remove after https://github.com/mozilla/sanitizer-polyfill/pull/122 was merged
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   Build:
     runs-on: ubuntu-latest
