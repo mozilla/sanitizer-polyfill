@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - rollup-build # For testing, remove after https://github.com/mozilla/sanitizer-polyfill/pull/122 was merged
   workflow_dispatch:
 
 permissions:
