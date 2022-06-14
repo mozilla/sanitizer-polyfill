@@ -1,7 +1,9 @@
-/* vim: set ts=8 sts=2 et sw=2 tw=80: */
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
+/* vim: set ts=8 sts=2 et sw=2 tw=80: */
+
+import DOMPurify from "dompurify";
 
 /**
  * sanitize a document fragment in-place
@@ -13,7 +15,6 @@ export const sanitizeDocFragment = function _sanitizeDocFragment(
   config,
   input
 ) {
-  /* global DOMPurify */
   let domPurifyConfig = _transformConfig(config);
   domPurifyConfig.IN_PLACE = true;
   DOMPurify.sanitize(input, domPurifyConfig);

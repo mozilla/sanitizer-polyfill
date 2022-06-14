@@ -1,0 +1,26 @@
+name: Build demo
+on:
+  push:
+    branches:
+      - main
+      - rollup-build # For testing, remove after https://github.com/mozilla/sanitizer-polyfill/pull/122 was merged
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+      - run: npm run prettier && npm run lint
+      - run: npm run build
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: '["dist/sanitizer-polyfill.js", "dist/sanitizer-polyfill.min.js"]'
+          message: "Update dist [skip actions]"
