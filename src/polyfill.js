@@ -62,7 +62,8 @@ function setup() {
       return getDefaultConfiguration();
     };
     window[GLOBALNAME] = sanitizer;
-    HTMLElement.prototype[SETTER_NAME] = function setHTML(input, sanitizerObj) {
+    HTMLElement.prototype[SETTER_NAME] = function setHTML(input, opt) {
+      let sanitizerObj = opt && opt.sanitizer;
       if (
         !sanitizerObj ||
         typeof sanitizerObj.getConfiguration !== "function"
