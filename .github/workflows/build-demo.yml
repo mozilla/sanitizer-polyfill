@@ -5,12 +5,10 @@ on:
       - main
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   Build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -19,7 +17,33 @@ jobs:
       - run: npm ci
       - run: npm run prettier && npm run lint
       - run: npm run build
-      - uses: EndBug/add-and-commit@v9
+
+      - name: Create temporary gh-pages-dist dir
+        run: |-
+          mkdir gh-pages-dist
+          cp -R demo gh-pages-dist/demo/
+          cp -R dist gh-pages-dist/dist/
+
+      - uses: actions/upload-pages-artifact@v1
         with:
-          add: '["dist/sanitizer-polyfill.js", "dist/sanitizer-polyfill.min.js"]'
-          message: "Update dist [skip actions]"
+          path: gh-pages-dist
+
+  Deploy:
+    needs: Build
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}demo/index.html
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1

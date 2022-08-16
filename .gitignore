@@ -105,5 +105,4 @@ typings/
 # intellij family of IDEs
 .idea
 
-dist/sanitizer-polyfill.cjs
-dist/sanitizer-polyfill.mjs
+dist
