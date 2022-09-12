@@ -74,7 +74,7 @@ function setup() {
       const context = inactiveDocument.createElement(this.localName);
       context.innerHTML = input;
       sanitizeDocFragment(sanitizerObj.getConfiguration(), context);
-      this.replaceChildren(...context.children);
+      this.replaceChildren(...context.childNodes);
     };
   }
 }
