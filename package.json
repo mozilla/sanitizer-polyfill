@@ -37,7 +37,7 @@
     "README.md"
   ],
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-compat": "^4.0.2",
