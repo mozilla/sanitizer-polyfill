@@ -48,7 +48,7 @@
     "rollup-plugin-terser": "^7.0.2"
   },
   "dependencies": {
-    "dompurify": "^2.4.0"
+    "dompurify": "^2.4.1"
   },
   "main": "./dist/sanitizer-polyfill.mjs",
   "exports": {
