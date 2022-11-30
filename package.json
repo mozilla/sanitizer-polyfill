@@ -41,7 +41,7 @@
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-compat": "^4.0.2",
-    "eslint-plugin-jsdoc": "^39.6.2",
+    "eslint-plugin-jsdoc": "^39.6.4",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.0",
     "rollup": "^2.79.1",
