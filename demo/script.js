@@ -8,6 +8,7 @@ addEventListener("load", function () {
   // smoke test
   console.log("typeof Sanitizer: " + typeof Sanitizer);
   try {
+    // eslint-disable-next-line compat/compat
     window.s = new Sanitizer();
   } catch (e) {
     console.warn("Sanitizer is not a constructor:", e);
