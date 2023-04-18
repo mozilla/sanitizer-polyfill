@@ -31,6 +31,7 @@ function doSanitize() {
   const context = contextSelect.value;
   const inputValue = inputEl.value;
   const contextEl = document.createElement(context);
+  // eslint-disable-next-line compat/compat
   contextEl.setHTML(inputValue, { sanitizer: new Sanitizer() });
   toutEl.value = contextEl.outerHTML;
   houtEl.replaceChildren(contextEl);
