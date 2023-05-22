@@ -41,9 +41,11 @@ export const _normalizeConfig = function _normalizeConfig(config) {
   // eslint-disable-next-line compat/compat
   for (let [configurationElementList, elements] of Object.entries(config)) {
     if (SUPPORTED_CONFIGURATION_LISTS.has(configurationElementList)) {
-      normalizedConfig[configurationElementList] = elements.map((element) => {
-        return element.toLowerCase();
-      });
+      normalizedConfig[configurationElementList] = Array.from(elements).map(
+        (element) => {
+          return element.toLowerCase();
+        }
+      );
       if (configurationElementList === "allowElements") {
         normalizedConfig[configurationElementList].forEach((element) => {
           if (!DEFAULT_ALLOWED_ELEMENTS.has(element)) {
