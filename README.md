@@ -1,5 +1,13 @@
 # Polyfill for the [Sanitizer API](https://github.com/WICG/sanitizer-api/) specification.
 
+## Usage
+
+**The Sanitizer API is still under heavy development. We do not recommend
+relying on the polyfill for stability and can not fully promise the same
+security guarantees as the finished API will.**
+
+## About
+
 The polyfill might provide a shim on top of
 [DOMPurify](https://github.com/cure53/DOMPurify/), that mainly rewrites the
 specified configuration object into a DOMPurify configuration.
