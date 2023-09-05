@@ -42,9 +42,7 @@ export const _normalizeConfig = function _normalizeConfig(config) {
   for (let [configurationElementList, elements] of Object.entries(config)) {
     if (SUPPORTED_CONFIGURATION_LISTS.has(configurationElementList)) {
       normalizedConfig[configurationElementList] = Array.from(elements).map(
-        (element) => {
-          return element.toLowerCase();
-        }
+        (element) => element.toLowerCase()
       );
       if (configurationElementList === "allowElements") {
         normalizedConfig[configurationElementList].forEach((element) => {
