@@ -37,7 +37,7 @@
   ],
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.2.1",
-    "eslint": "^8.49.0",
+    "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-compat": "^4.2.0",
     "eslint-plugin-jsdoc": "^46.8.1",
