@@ -40,7 +40,7 @@
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-compat": "^4.2.0",
-    "eslint-plugin-jsdoc": "^46.9.0",
+    "eslint-plugin-jsdoc": "^46.9.1",
     "prettier": "^3.1.1",
     "rollup": "^2.79.1",
     "rollup-plugin-terser": "^7.0.2"
